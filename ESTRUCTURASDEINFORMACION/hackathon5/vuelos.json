@@ -1,0 +1,25 @@
+{
+  "nodos": ["BOG-Bogota","MDE-Medellin","CLO-Cali","CTG-Cartagena","BAQ-B/quilla","SMR-S.Marta","PEI-Pereira","BGA-B/manga","CUC-Cucuta","AXM-Armenia","VUP-V/dupar","NVA-Neiva","LET-Leticia","MZL-Manizales","EYP-Yopal"],
+  "rutas": [
+    {"origen":"BOG-Bogota","destino":"MDE-Medellin","minutos":22},
+    {"origen":"MDE-Medellin","destino":"CLO-Cali","minutos":9},
+    {"origen":"CLO-Cali","destino":"CTG-Cartagena","minutos":12},
+    {"origen":"CTG-Cartagena","destino":"BAQ-B/quilla","minutos":20},
+    {"origen":"BAQ-B/quilla","destino":"SMR-S.Marta","minutos":8},
+    {"origen":"SMR-S.Marta","destino":"PEI-Pereira","minutos":24},
+    {"origen":"PEI-Pereira","destino":"BGA-B/manga","minutos":21},
+    {"origen":"BGA-B/manga","destino":"CUC-Cucuta","minutos":11},
+    {"origen":"CUC-Cucuta","destino":"AXM-Armenia","minutos":18},
+    {"origen":"AXM-Armenia","destino":"VUP-V/dupar","minutos":15},
+    {"origen":"VUP-V/dupar","destino":"NVA-Neiva","minutos":21},
+    {"origen":"NVA-Neiva","destino":"LET-Leticia","minutos":22},
+    {"origen":"LET-Leticia","destino":"MZL-Manizales","minutos":15},
+    {"origen":"MZL-Manizales","destino":"EYP-Yopal","minutos":14},
+    {"origen":"BOG-Bogota","destino":"BAQ-B/quilla","minutos":30},
+    {"origen":"CTG-Cartagena","destino":"BGA-B/manga","minutos":22},
+    {"origen":"PEI-Pereira","destino":"VUP-V/dupar","minutos":16},
+    {"origen":"AXM-Armenia","destino":"MZL-Manizales","minutos":39},
+    {"origen":"CLO-Cali","destino":"LET-Leticia","minutos":18},
+    {"origen":"MDE-Medellin","destino":"EYP-Yopal","minutos":44}
+  ]
+}

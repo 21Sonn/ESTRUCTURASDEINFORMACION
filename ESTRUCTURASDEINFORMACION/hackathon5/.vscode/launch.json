@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "type": "java",
+        "name": "Launch Java Program",
+        "request": "launch",
+        "mainClass": ""
+    },
+    {
+      "type": "java",
+      "name": "Hackathon5 servidor",
+      "request": "launch",
+      "mainClass": "Hackathon5",
+      "args": ["serve"],
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
