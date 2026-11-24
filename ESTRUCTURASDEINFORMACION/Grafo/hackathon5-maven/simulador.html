@@ -571,7 +571,7 @@
       <select id="destino"></select>
 
       <label for="k">[K-PATHS] Rutas a rastrear (Óptima + Alt)</label>
-      <input id="k" type="number" min="1" max="5" value="3">
+      <input id="k" type="number" value="0" readonly>
 
       <div class="btn-group">
         <button id="btnRuta" class="action">&gt; EJECUTAR DIJKSTRA</button>
@@ -1027,19 +1027,32 @@ function nodoTexto(clase, texto) {
 
 async function calcularRuta() {
   aviso('');
-  if (!origen || !destino) { escribir([nodoTexto('muted', '> ERROR: Define nodos ORIGEN y DESTINO.')]); return; }
-  if (origen === destino) { escribir([nodoTexto('muted', '> Nodos idénticos. Costo temporal: 0 min.')]); return; }
+  if (!origen || !destino) {
+    $('k').value = 0;
+    escribir([nodoTexto('muted', '> ERROR: Define nodos ORIGEN y DESTINO.')]);
+    return;
+  }
+  if (origen === destino) {
+    $('k').value = 0;
+    escribir([nodoTexto('muted', '> Nodos idénticos. Costo temporal: 0 min.')]);
+    return;
+  }
   try {
-    const k = Math.max(1, Math.min(5, parseInt($('k').value, 10) || 1));
-    const d = await api('/api/ruta?origen=' + encodeURIComponent(origen) + '&destino=' + encodeURIComponent(destino) + '&k=' + k);
+    const kConsulta = 3; // Mantén 3 para traer alternativas de Yen, o pon 1 si solo quieres la óptima
+    const d = await api('/api/ruta?origen=' + encodeURIComponent(origen) + '&destino=' + encodeURIComponent(destino) + '&k=' + kConsulta);
     limpiarMapa();
     if (!d.optima) {
+      $('k').value = 0;
       escribir([
         nodoTexto('titulo', '[!] RUTA INEXISTENTE'),
         nodoTexto('muted', 'No hay vector dirigido desde ' + origen + ' hacia ' + destino + '.')
       ]);
       return;
     }
+
+    // Muestra únicamente el número de saltos/tramos de la ruta óptima
+    $('k').value = d.optima.tramos;
+
     resaltar(d.optima.estaciones, 'ruta');
     const partes = [
       nodoTexto('titulo', '[OK] ÓPTIMA (DIJKSTRA): ' + d.optima.minutos + ' MIN | ' + d.optima.tramos + ' TRAMOS'),
